@@ -43,14 +43,15 @@ def get_instances(action, state):
     for reservation in response["Reservations"]:
         for instance in reservation["Instances"]:
             instance_ids.append(instance["InstanceId"])
+            
     return instance_ids
 
 def lambda_handler(event, context):
     # find ec2 instance based on action tag
     try:
         auto_stop_instances = get_instances(
-            "AUTO_STOP", 
-            "RUNNING"
+            AUTO_STOP, 
+            RUNNING
             )
 
         if auto_stop_instances:
@@ -58,8 +59,8 @@ def lambda_handler(event, context):
             logger.info(f"Stopped instances: {auto_stop_instances}")
 
         auto_start_instances = get_instances(
-            "AUTO_START",
-            "STOPPED"
+            AUTO_START,
+            STOPPED
             )
 
         if auto_start_instances:
