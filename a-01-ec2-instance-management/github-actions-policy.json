@@ -1,0 +1,10 @@
+{
+    "Sid": "UpdateSpecificLambda",
+    "Effect": "Allow",
+    "Action": [
+        "lambda:GetFunction",
+        "lambda:GetFunctionConfiguration",
+        "lambda:UpdateFunctionCode"
+    ],
+    "Resource": "arn:aws:lambda:ap-south-1:ACCOUNT_ID:function:ec2-instance-manager"
+}
