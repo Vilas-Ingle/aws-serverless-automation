@@ -1,0 +1,37 @@
+name: Deploy S3 Encryption Monitor
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "a-04-monitor-unencrypted-s3/**"
+      - ".github/workflows/deploy-s3-encryption-monitor.yml"
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+
+      - name: Package Lambda Function
+        run: |
+          cd a-04-monitor-unencrypted-s3
+          zip lambda.zip lambda_function.py
+
+      - name: Deploy Lambda Function
+        run: |
+          aws lambda update-function-code \
+            --function-name monitor-unencrypted-s3 \
+            --zip-file fileb://a-04-monitor-unencrypted-s3/lambda.zip
