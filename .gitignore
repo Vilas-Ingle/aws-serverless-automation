@@ -1,29 +1,6 @@
-# Python
 __pycache__/
-*.py[cod]
-*.pyo
-
-# Virtual Environment
-.venv/
-venv/
-env/
-
-# VS Code
-.vscode/
-
-# Pytest
-.pytest_cache/
-
-# macOS
-.DS_Store
-
-# Logs
-*.log
-
-# Environment Variables
+*.pyc
+*.zip
 .env
-
-# Terraform (future use)
-.terraform/
-*.tfstate
-*.tfstate.backup
+.vscode/
+.idea/
