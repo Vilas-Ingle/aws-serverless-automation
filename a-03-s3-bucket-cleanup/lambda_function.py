@@ -7,12 +7,10 @@ logger.setLevel(logging.INFO)
 
 s3 = boto3.client("s3")
 
-# Change this to your bucket name
 BUCKET_NAME = "vilas-s3-cleanup"
 
-# Keep 30 for submission.
-# For testing, temporarily set to 0.
-RETENTION_DAYS = 0
+
+RETENTION_DAYS = 30
 
 
 def delete_old_objects(bucket_name: str, retention_days: int) -> None:
