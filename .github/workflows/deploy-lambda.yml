@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'a-01-ec2-instance-management/**'
+      - '.github/workflows/deploy-lambda.yml'
+
+  workflow_dispatch:
 
 jobs:
   deploy:
