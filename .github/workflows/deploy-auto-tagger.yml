@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'a-02-auto-tag-ec2/**'
+      - '.github/workflows/deploy-auto-tagger.yml'
 
 jobs:
   deploy:
@@ -22,11 +25,11 @@ jobs:
 
       - name: Package Lambda Function
         run: |
-          cd a-02-ec2-auto-tagging
+          cd a-02-auto-tag-ec2
           zip lambda.zip lambda_function.py
 
       - name: Deploy Lambda Function
         run: |
           aws lambda update-function-code \
             --function-name ec2-auto-tagger \
-            --zip-file fileb://a-02-ec2-auto-tagging/lambda.zip
+            --zip-file fileb://a-02-auto-tag-ec2/lambda.zip
