@@ -1,0 +1,35 @@
+name: Deploy EC2 State Change Alert Lambda
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'a-05-ec2-state-change-alert/**'
+      - '.github/workflows/deploy-ec2-state-alert.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+
+      - name: Package Lambda Function
+        run: |
+          cd a-05-ec2-state-change-alert
+          zip lambda.zip lambda_function.py
+
+      - name: Deploy Lambda Function
+        run: |
+          aws lambda update-function-code \
+            --function-name ec2-state-change-alert \
+            --zip-file fileb://a-05-ec2-state-change-alert/lambda.zip
