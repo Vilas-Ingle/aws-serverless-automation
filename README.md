@@ -1,66 +1,94 @@
 # AWS Serverless Automation
 
-## Overview
+A collection of production-inspired AWS serverless automation projects built using AWS Lambda, EventBridge, SNS, S3, EC2, IAM, CloudWatch, and GitHub Actions.
 
-This repository contains multiple AWS serverless automation projects developed using AWS Lambda, Amazon S3, Amazon EC2, IAM, CloudWatch, EventBridge, GitHub Actions, and Python.
-
-The projects demonstrate infrastructure automation, monitoring, security, and continuous deployment using GitHub Actions.
-
----
-
-## Projects
-
-### 1. EC2 Instance Management
-
-Automatically starts and stops EC2 instances based on resource tags.
-
-### 2. EC2 Auto Tagging
-
-Automatically applies default tags to newly launched EC2 instances using EventBridge and AWS Lambda.
-
-### 3. S3 Bucket Cleanup
-
-Deletes S3 objects older than the configured retention period.
-
-### 4. Monitor Unencrypted S3 Buckets
-
-Checks S3 bucket encryption status and logs results to CloudWatch.
+The purpose of this repository is to demonstrate event-driven automation, Infrastructure as Code concepts, secure IAM practices, and CI/CD deployment for AWS Lambda functions.
 
 ---
 
 ## Technologies Used
 
 - AWS Lambda
+- Amazon EventBridge
 - Amazon EC2
 - Amazon S3
-- Amazon EventBridge
-- IAM
+- Amazon SNS
+- AWS IAM
 - Amazon CloudWatch
 - GitHub Actions
-- Python 3.14
-- Boto3
+- Python (boto3)
+
+---
+
+## Projects
+
+| Assignment | Description |
+|------------|-------------|
+| A-01 | EC2 Instance Start/Stop Automation |
+| A-02 | Automatically Tag EC2 Instances |
+| A-03 | S3 Bucket Cleanup Automation |
+| A-04 | Detect Unencrypted S3 Buckets |
+| A-05 | EC2 State Change Email Alerts |
 
 ---
 
 ## Repository Structure
 
-```
+```text
 aws-serverless-automation/
+
 ├── a-01-ec2-instance-management
 ├── a-02-auto-tag-ec2
 ├── a-03-s3-bucket-cleanup
 ├── a-04-monitor-unencrypted-s3
+├── a-05-ec2-state-change-alert
 └── .github/workflows
 ```
 
 ---
 
+## Features
+
+- Event-driven serverless automation
+- Secure IAM implementation
+- GitHub Actions CI/CD
+- CloudWatch monitoring
+- Automated notifications
+- Least Privilege IAM policies
+- Production-style project organization
+
+---
+
 ## CI/CD
 
-GitHub Actions automatically deploys updated Lambda functions whenever changes are pushed to the `main` branch.
+Each project contains an independent GitHub Actions workflow that:
+
+- Packages the Lambda function
+- Deploys automatically after push to `main`
+- Uses AWS CLI
+- Uses GitHub Secrets
+- Updates Lambda without manual deployment
+
+---
+
+## Skills Demonstrated
+
+- Python Automation
+- AWS Lambda
+- EventBridge
+- SNS
+- EC2 Automation
+- S3 Automation
+- IAM Policies
+- CloudWatch
+- GitHub Actions
+- Serverless Architecture
+- DevOps Best Practices
 
 ---
 
 ## Author
 
-Vilas Ingle
+**Vilas Ingle**
+
+AWS | DevOps | Python | Automation
